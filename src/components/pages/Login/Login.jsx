@@ -18,8 +18,7 @@ export default function Login() {
         email: matricula,
         password: password
         }
-        
-    try{
+      
       api.post(`/auth/login`, user)
         .then(response => {
 
@@ -33,14 +32,15 @@ export default function Login() {
           const token = sessionStorage.getItem('accessToken')
           if(token){
               toast.success("Login efetuado!")
-            //   document.location.href = '/dashboard';
+              setTimeout(() =>
+              document.location.href = '/users', 3000
+              )
           }
 
-        })}catch(error){
-
-          console.log('api errors:', error)
-
-        }
+        }).catch(err =>{
+          toast.error("Ocorreu algum erro!")
+          console.log(err);
+        })
       };
 
   return (
@@ -67,14 +67,13 @@ export default function Login() {
         </div>
         <ToastContainer
         position="top-right"
-        autoClose={5000}
+        autoClose={2000}
         hideProgressBar={false}
         newestOnTop={false}
         closeOnClick
         rtl={false}
         draggable
         />
-        {/* Same as */}
     </div>
   )
 }
