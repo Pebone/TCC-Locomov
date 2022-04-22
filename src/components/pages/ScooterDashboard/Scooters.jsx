@@ -8,9 +8,9 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import 'react-toastify/dist/ReactToastify.css';
 import { ToastContainer, toast } from 'react-toastify';
 
-export default function Users() {
+export default function Scooters() {
 
-    const [users, setUsers] = useState([]);
+    const [scooters, setScooters] = useState([]);
     
     useEffect(() =>{
         
@@ -18,12 +18,12 @@ export default function Users() {
             'Authorization': "Bearer " + sessionStorage.getItem('accessToken'),
         }
 
-        api.get(`admin`, { headers: headers })
+        api.get(`/admin/scooter/find`, { headers: headers })
         
             .then(res =>{
         
                 console.log(res.data)
-                setUsers(res.data)
+                setScooters(res.data)
         
             }).catch(err => {
             console.log(err)
@@ -31,21 +31,21 @@ export default function Users() {
 
     }, [])
 
-    function Deletar(user) {  
+    function Deletar(scooter) {  
 
         const headers = {
             'Authorization': "Bearer " + sessionStorage.getItem('accessToken'),
             }
 
-        let id = user._id
+        let id = scooter._id
 
         console.log(id)
 
-        api.delete(`/admin/${id}`, { headers: headers })
+        api.delete(`/admin/scooter/${id}`, { headers: headers })
 
         .then(res =>{
-            
-            toast.success("Usuário deletado!")
+
+            toast.success("Patinete deletado!")
             setTimeout(() =>
             document.location.reload(), 3000
             )
@@ -65,34 +65,29 @@ export default function Users() {
             <table>
                 <thead>
                     <tr>
-                        <th>Nome</th>
-                        <th>Matrícula</th>
-                        <th>CPF</th>
-                        <th>Email</th>
-                        <th>Tipo de usuário</th>
-                        <th>Ação</th>
+                        <th>Código</th>
+                        <th>Localização</th>
+                        <th>Bateria</th>
+                        <th>Status</th>
                     </tr>
                 </thead>
                 <tbody>
-                    {users.map(user =>
-                        <tr key = {user._id}>
+                    {scooters.map(scooter =>
+                        <tr key = {scooter._id}>
                             <td>
-                                {user.name}
+                                {scooter.code}
                             </td>
                             <td>
-                                {user.matriculation}
+                                {scooter.localization}
                             </td>
                             <td>
-                                {user.cpfUser}
+                                {scooter.battery}
                             </td>
                             <td>
-                                {user.email}
+                                {scooter.status}
                             </td>
                             <td>
-                                {user.typeUser}
-                            </td>
-                            <td>
-                                <Button variant="danger" onClick = {(e) => Deletar(user,e)}>Deletar</Button>
+                                <Button variant="danger" onClick = {(e) => Deletar(scooter,e)}>Deletar</Button>
                             </td>
                         </tr>
                     )}
