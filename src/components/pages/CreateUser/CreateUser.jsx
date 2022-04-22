@@ -55,7 +55,7 @@ export default function Create() {
         </div>
         <div className = '__areaRegister'>
             <div className = '__divTitle'>
-                <text className = '__title'>Acesso ao Locomoov</text>
+                <text className = '__title'>Cadastrar Usuário</text>
                 <div>_____________________</div>
             </div>
             <div className = '__Register'>

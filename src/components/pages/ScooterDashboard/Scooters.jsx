@@ -6,11 +6,12 @@ import 'react-toastify/dist/ReactToastify.css';
 import {Button} from "react-bootstrap"
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'react-toastify/dist/ReactToastify.css';
-import { ToastContainer, toast } from 'react-toastify';
+import { toast } from 'react-toastify';
 
 export default function Scooters() {
 
     const [scooters, setScooters] = useState([]);
+    const [search, setSearch] = useState("");
     
     useEffect(() =>{
         
@@ -55,11 +56,21 @@ export default function Scooters() {
         })
       };
     
+      function updateSearch (event) {
+        setSearch(event.target.value.substr(0, 20))
+      }
+    
+      const searchScooters = scooters.filter(
+        (scooter) => {
+          return (scooter.code).indexOf(search) ===  0;
+        }
+      )
 
   return (
     <div className = '__backgroundUsersList'>
         <div>
             <HeaderNavigator></HeaderNavigator>
+            <input type = 'text' placeholder = 'Pesquisar' className = 'inputSearch' onChange={updateSearch} value = {search} style = {{marginLeft: "20px"}}></input>
         </div>
         <div className = '__usersList'>
             <table>
@@ -69,10 +80,11 @@ export default function Scooters() {
                         <th>Localização</th>
                         <th>Bateria</th>
                         <th>Status</th>
+                        <th>Ações</th>
                     </tr>
                 </thead>
                 <tbody>
-                    {scooters.map(scooter =>
+                    {searchScooters.map(scooter =>
                         <tr key = {scooter._id}>
                             <td>
                                 {scooter.code}
@@ -91,98 +103,6 @@ export default function Scooters() {
                             </td>
                         </tr>
                     )}
-                    
-                    <tr>
-                        <td>User</td>
-                        <td>User</td>
-                        <td>User</td>
-                        <td>User</td>
-                        <td>User</td>
-                    </tr>
-                    <tr>
-                        <td>User</td>
-                        <td>User</td>
-                        <td>User</td>
-                        <td>User</td>
-                        <td>User</td>
-                    </tr>
-                    <tr>
-                        <td>User</td>
-                        <td>User</td>
-                        <td>User</td>
-                        <td>User</td>
-                        <td>User</td>
-                    </tr>
-                    <tr>
-                        <td>User</td>
-                        <td>User</td>
-                        <td>User</td>
-                        <td>User</td>
-                        <td>User</td>
-                    </tr>
-                    <tr>
-                        <td>User</td>
-                        <td>User</td>
-                        <td>User</td>
-                        <td>User</td>
-                        <td>User</td>
-                    </tr>
-                    <tr>
-                        <td>User</td>
-                        <td>User</td>
-                        <td>User</td>
-                        <td>User</td>
-                        <td>User</td>
-                    </tr>
-                    <tr>
-                        <td>User</td>
-                        <td>User</td>
-                        <td>User</td>
-                        <td>User</td>
-                        <td>User</td>
-                    </tr>
-                    <tr>
-                        <td>User</td>
-                        <td>User</td>
-                        <td>User</td>
-                        <td>User</td>
-                        <td>User</td>
-                    </tr>
-                    <tr>
-                        <td>User</td>
-                        <td>User</td>
-                        <td>User</td>
-                        <td>User</td>
-                        <td>User</td>
-                    </tr>
-                    <tr>
-                        <td>User</td>
-                        <td>User</td>
-                        <td>User</td>
-                        <td>User</td>
-                        <td>User</td>
-                    </tr>
-                    <tr>
-                        <td>User</td>
-                        <td>User</td>
-                        <td>User</td>
-                        <td>User</td>
-                        <td>User</td>
-                    </tr>
-                    <tr>
-                        <td>User</td>
-                        <td>User</td>
-                        <td>User</td>
-                        <td>User</td>
-                        <td>User</td>
-                    </tr>
-                    <tr>
-                        <td>User</td>
-                        <td>User</td>
-                        <td>User</td>
-                        <td>User</td>
-                        <td>User</td>
-                    </tr>
 
                 </tbody>
             </table>

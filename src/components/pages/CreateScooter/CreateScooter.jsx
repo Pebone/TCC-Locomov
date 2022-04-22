@@ -12,20 +12,20 @@ export default function Create() {
     const [bateria, setBateria] = useState("");
     const [status, setStatus] = useState(0);
 
-    function Create(event) {  
+    function CreateScooter(event) {  
 
         event.preventDefault()
         
-        let user = {
+        let scooter = {
             code: codigo,
             localization: localizacao,
             battery: bateria,
             status: Number(status)
         }
 
-        console.log(user)
+        console.log(scooter)
       
-      api.post(`admin/scooter/create`, user)
+      api.post(`/admin/scooter/create`, scooter)
         .then(response => {
 
           console.log(response)
@@ -76,7 +76,7 @@ export default function Create() {
                     </div>
                 </div>
                 <div style = {{display: "flex", justifyContent: "center", alignItems: "center"}}>
-                    <button type = 'submit' onClick = {Create}>Cadastrar</button>
+                    <button type = 'submit' onClick = {CreateScooter} style = {{display: 'flex', justifyContent: "center", alignItems: "center"}}>Cadastrar</button>
                 </div>
             </div>
         </div>
