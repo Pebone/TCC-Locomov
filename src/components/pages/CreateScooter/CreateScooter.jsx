@@ -23,9 +23,13 @@ export default function Create() {
             status: Number(status)
         }
 
+        const headers = {
+            'Authorization': "Bearer " + sessionStorage.getItem('accessToken'),
+            }
+
         console.log(scooter)
       
-      api.post(`/admin/scooter/create`, scooter)
+      api.post("admin/scooter/create", scooter, {headers: headers})
         .then(response => {
 
           console.log(response)

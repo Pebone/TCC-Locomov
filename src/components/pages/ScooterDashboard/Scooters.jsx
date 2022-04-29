@@ -7,6 +7,7 @@ import {Button} from "react-bootstrap"
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'react-toastify/dist/ReactToastify.css';
 import { toast } from 'react-toastify';
+import {AiFillDelete, AiOutlineSearch} from 'react-icons/ai';
 
 export default function Scooters() {
 
@@ -70,8 +71,17 @@ export default function Scooters() {
     <div className = '__backgroundUsersList'>
         <div>
             <HeaderNavigator></HeaderNavigator>
-            <input type = 'text' placeholder = 'Pesquisar' className = 'inputSearch' onChange={updateSearch} value = {search} style = {{marginLeft: "20px"}}></input>
         </div>
+        <div className = '__divTitle'>
+                <text className = '__title'>Lista de patinetes</text>
+                <div>__________________________________________</div>
+            </div>
+            <div style = {{display: 'flex', justifyContent: 'flex-end', alignItems: 'center', padding: "0px 48px 0px 0px"}}>
+                <input type = 'text' placeholder = 'Pesquisar usuário' className = 'inputSearch' onChange={updateSearch} value = {search} style = {{marginLeft: "20px"}}></input>
+                <div style = {{backgroundColor: "gray", height: "3vh", width: "2vw", display: "flex", justifyContent: "center", alignItems: "center", borderRadius: "2px"}}>
+                    <AiOutlineSearch></AiOutlineSearch>
+                </div>
+            </div>
         <div className = '__usersList'>
             <table>
                 <thead>
@@ -99,7 +109,7 @@ export default function Scooters() {
                                 {scooter.status}
                             </td>
                             <td>
-                                <Button variant="danger" onClick = {(e) => Deletar(scooter,e)}>Deletar</Button>
+                                <Button variant="danger" onClick = {(e) => Deletar(scooter,e)}> <AiFillDelete></AiFillDelete> </Button>
                             </td>
                         </tr>
                     )}
