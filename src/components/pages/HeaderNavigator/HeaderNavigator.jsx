@@ -16,7 +16,7 @@ import api from "../../../services/api.js";
 
 export default function HeaderNavigator() {
   function Logout() {
-    sessionStorage.setItem("accessToken", "");
+    sessionStorage.clear();
     toast.success("Tchau :)!");
     setTimeout(() => (document.location.href = "/"), 3000);
   }
@@ -76,7 +76,7 @@ export default function HeaderNavigator() {
         draggable
       />
       <div style = {{display: "flex", justifyContent: "center", alignItems: "center", gap: "20px"}}>
-        <span>Ólá, {sessionStorage.getItem("name")}</span>
+        <span>Olá, {sessionStorage.getItem("name")}</span>
         <DropdownButton
           variant="light"
           title="Adminstrativo"

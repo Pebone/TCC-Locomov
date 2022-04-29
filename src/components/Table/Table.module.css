@@ -2,6 +2,7 @@
   border-collapse: collapse;
   border: none;
   width: 100%;
+  margin-top: 10px;
 }
 
 .tableRowHeader {
@@ -17,6 +18,10 @@
   text-align: left;
   font-size: 14px;
   color: #2c3e50;
+}
+
+.tableHeader:not(:last-child) {
+  border-right: 1px solid black;
 }
 
 .tableHeader:first-child {
@@ -38,5 +43,10 @@
 .tableCell {
   padding: 12px;
   font-size: 14px;
-  color: grey;
+  color: black;
+  font-weight: bold;
+}
+
+.tableCell:not(:last-child) {
+  border-right: 1px solid black;
 }

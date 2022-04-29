@@ -58,7 +58,7 @@ const Table = ({ data, rowsPerPage }) => {
               <td className={styles.tableCell}>{el.cpfUser}</td>
               <td className={styles.tableCell}>{el.email}</td>
               <td className={styles.tableCell}>{el.typeUser}</td>
-              <Button variant="danger" onClick={(e) => Deletar(el, e)}> <AiFillDelete></AiFillDelete> </Button>
+              <Button style = {{margin: 5, display: "flex", justifyContent: "center", alignItems: "center"}} variant="danger" onClick={(e) => Deletar(el, e)}> <AiFillDelete></AiFillDelete> </Button>
               {/* <td className={styles.tableCell}>{el.cpfUser}</td> */}
             </tr>
           ))}

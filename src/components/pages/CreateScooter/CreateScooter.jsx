@@ -80,7 +80,7 @@ export default function Create() {
                     </div>
                 </div>
                 <div style = {{display: "flex", justifyContent: "center", alignItems: "center"}}>
-                    <button type = 'submit' onClick = {CreateScooter} style = {{display: 'flex', justifyContent: "center", alignItems: "center"}}>Cadastrar</button>
+                    <button type = 'submit' onClick = {CreateScooter} style = {{display: 'flex', justifyContent: "center", alignItems: "center", width: "100%"}}>Cadastrar</button>
                 </div>
             </div>
         </div>

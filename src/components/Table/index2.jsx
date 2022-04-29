@@ -57,7 +57,9 @@ const Table = ({ data, rowsPerPage }) => {
               <td className={styles.tableCell}>{el.localization}</td>
               <td className={styles.tableCell}>{el.battery}</td>
               <td className={styles.tableCell}>{el.status}</td>
-              <Button variant="danger" onClick={(e) => Deletar(el, e)}> <AiFillDelete></AiFillDelete> </Button>
+              <td>
+                <Button style = {{margin: 5, display: "flex", justifyContent: "center", alignItems: "center"}} variant="danger" onClick={(e) => Deletar(el, e)}> <AiFillDelete></AiFillDelete> </Button>
+              </td>
               {/* <td className={styles.tableCell}>{el.cpfUser}</td> */}
             </tr>
           ))}

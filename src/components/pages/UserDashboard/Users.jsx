@@ -79,7 +79,7 @@ export default function Users() {
                 </div>
                 <div style={{ display: 'flex', justifyContent: 'flex-end', alignItems: 'center', padding: "0px 48px 0px 0px" }}>
                     <input type='text' placeholder='Pesquisar usuário' className='inputSearch' onChange={updateSearch} value={search} style={{ marginLeft: "20px" }}></input>
-                    <div style={{ backgroundColor: "gray", height: "3vh", width: "2vw", display: "flex", justifyContent: "center", alignItems: "center", borderRadius: "2px" }}>
+                    <div style={{ backgroundColor: "gray", height: "30px", width: "30px", display: "flex", justifyContent: "center", alignItems: "center", borderRadius: "2px" }}>
                         <AiOutlineSearch></AiOutlineSearch>
                     </div>
                 </div>
@@ -124,7 +124,7 @@ export default function Users() {
                 </table> */}
                 <main className={styles.container}>
                     <div className={styles.wrapper}>
-                        <Table data={searchUsers} rowsPerPage={1} />
+                        <Table data={searchUsers} rowsPerPage={2} />
                     </div>
                 </main>
             </div>

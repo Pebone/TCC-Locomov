@@ -8,7 +8,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import 'react-toastify/dist/ReactToastify.css';
 import { toast } from 'react-toastify';
 import { AiFillDelete, AiOutlineSearch } from 'react-icons/ai';
-import styles from "../../../components/Table";
+import styles from "../UserDashboard/App.module.css";
 import Table from "../../Table/index2";
 
 export default function Scooters() {
@@ -80,7 +80,7 @@ export default function Scooters() {
             </div>
             <div style={{ display: 'flex', justifyContent: 'flex-end', alignItems: 'center', padding: "0px 48px 0px 0px" }}>
                 <input type='text' placeholder='Pesquisar usuário' className='inputSearch' onChange={updateSearch} value={search} style={{ marginLeft: "20px" }}></input>
-                <div style={{ backgroundColor: "gray", height: "3vh", width: "2vw", display: "flex", justifyContent: "center", alignItems: "center", borderRadius: "2px" }}>
+                <div style={{ backgroundColor: "gray", height: "30px", width: "30px", display: "flex", justifyContent: "center", alignItems: "center", borderRadius: "2px" }}>
                     <AiOutlineSearch></AiOutlineSearch>
                 </div>
             </div>
@@ -121,7 +121,7 @@ export default function Scooters() {
         </div> */}
             <main className={styles.container}>
                 <div className={styles.wrapper}>
-                    <Table data={searchScooters} rowsPerPage={1} />
+                    <Table data={searchScooters} rowsPerPage={3} />
                 </div>
             </main>
         </div>
