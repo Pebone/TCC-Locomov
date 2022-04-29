@@ -29,7 +29,7 @@ export default function Login() {
           sessionStorage.setItem('contentType', response.headers['content-type'])
           sessionStorage.setItem('tokenType', response.headers['token-type'])
           sessionStorage.setItem('name', response.data.user.name)
-          sessionStorage.setItem('type', response.data.user.typeUser)
+          sessionStorage.setItem('type', response.data.typeUser)
 
           const token = sessionStorage.getItem('accessToken')
           if(token){

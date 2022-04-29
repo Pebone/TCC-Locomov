@@ -75,22 +75,25 @@ export default function HeaderNavigator() {
         rtl={false}
         draggable
       />
-      <DropdownButton
-        variant="light"
-        title="Adminstrativo"
-        id="input-group-dropdown-1"
-        // className="__spanHeader"
-      >
-        <Dropdown.Item href="/createUsers">Criar Usuário</Dropdown.Item>
-        <Dropdown.Item href="/users">Listar Usuários</Dropdown.Item>
-        <Dropdown.Divider />
-        <Dropdown.Item href="/createScooters">Criar Patinetes</Dropdown.Item>
-        <Dropdown.Item href="/scooters">Listar Patinetes</Dropdown.Item>
-        {/* <Dropdown.Item href="/createUsers">Criar usuário</Dropdown.Item> */}
-        <Dropdown.Divider />
-        <Dropdown.Item onClick={handleShow}>Resetar Senha</Dropdown.Item>
-        <Dropdown.Item onClick={Logout}>Logout</Dropdown.Item>
-      </DropdownButton>
+      <div style = {{display: "flex", justifyContent: "center", alignItems: "center", gap: "20px"}}>
+        <span>Ólá, {sessionStorage.getItem("name")}</span>
+        <DropdownButton
+          variant="light"
+          title="Adminstrativo"
+          id="input-group-dropdown-1"
+          // className="__spanHeader"
+        >
+          <Dropdown.Item href="/createUsers">Criar Usuário</Dropdown.Item>
+          <Dropdown.Item href="/users">Listar Usuários</Dropdown.Item>
+          <Dropdown.Divider />
+          <Dropdown.Item href="/createScooters">Criar Patinetes</Dropdown.Item>
+          <Dropdown.Item href="/scooters">Listar Patinetes</Dropdown.Item>
+          {/* <Dropdown.Item href="/createUsers">Criar usuário</Dropdown.Item> */}
+          <Dropdown.Divider />
+          <Dropdown.Item onClick={handleShow}>Resetar Senha</Dropdown.Item>
+          <Dropdown.Item onClick={Logout}>Logout</Dropdown.Item>
+        </DropdownButton>
+      </div>
       {/* <FormControl aria-label="Text input with dropdown button" /> */}
       {/* </InputGroup> */}
       <Modal show={show} onHide={handleClose}>
