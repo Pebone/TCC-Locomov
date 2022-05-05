@@ -237,7 +237,7 @@
     display: flex;
     
     .labelOnda{
-        animation: animation 3s ease-in-out;
+        animation: animation 4s ease-in-out;
     }
 }
 
@@ -246,16 +246,28 @@
         transform: rotate(0deg);
     }
     20% {
-        transform: rotate(45deg);
+        transform: rotate(-40deg);
     }
+    // 30% {
+    //     transform: rotate(-20deg);
+    // }
     40% {
-        transform: rotate(-20deg);
+        transform: rotate(20deg);
+    }
+    50% {
+        transform: rotate(-10deg);
     }
     60% {
         transform: rotate(10deg);
     }
+    70% {
+        transform: rotate(-10deg);
+    }
     80% {
-        transform: rotate(-5deg);
+        transform: rotate(2deg);
+    }
+    90% {
+        transform: rotate(-2deg);
     }
     100% {
         transform: rotate(0deg);
