@@ -9,6 +9,7 @@ import {
   Button,
 } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
+import Logo from "../../../assets/images/logo.png";
 
 export default function Login() {
 
@@ -72,18 +73,12 @@ export default function Login() {
         console.log(response)
         response.headers['token-type'] = `Bearer`
         sessionStorage.setItem('accessToken', response.data.token)
-        sessionStorage.setItem('userID', response.data.user._id)
         sessionStorage.setItem('contentType', response.headers['content-type'])
         sessionStorage.setItem('tokenType', response.headers['token-type'])
-        sessionStorage.setItem('name', response.data.user.name)
-        sessionStorage.setItem('type', response.data.typeUser)
 
         const token = sessionStorage.getItem('accessToken')
         if (token) {
-          toast.success("Login efetuado!")
-          setTimeout(() =>
-            document.location.href = '/users', 3000
-          )
+          toast.success("Um email foi enviado ao email informado contendo uma nova senha!")
         }
 
       }).catch(err => {
@@ -95,12 +90,11 @@ export default function Login() {
   return (
     <div className='__backgroundLogin'>
       <div>
-        <HeaderNavigator></HeaderNavigator>
+        {/* <HeaderNavigator></HeaderNavigator> */}
       </div>
       <div className='__areaLogin'>
         <div className='__divTitle'>
-          <text className='__title'>Acesso ao Locomoov</text>
-          <div>_____________________</div>
+          <img src={Logo} className="__imgHeader"></img>
         </div>
         <div className='__Login'>
           <div>

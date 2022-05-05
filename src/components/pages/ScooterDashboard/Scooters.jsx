@@ -65,6 +65,15 @@ export default function Scooters() {
 
     const searchScooters = scooters.filter(
         (scooter) => {
+            if(scooter.status === 1){
+                scooter.status = "Disponível"
+            }
+            if(scooter.status === 2){
+                scooter.status = "Carregando"
+            }
+            if(scooter.status === 3){
+                scooter.status = "Defeituoso"
+            }
             return (scooter.code).indexOf(search) === 0;
         }
     )
@@ -78,7 +87,7 @@ export default function Scooters() {
                 <text className='__title'>Lista de patinetes</text>
                 <div>__________________________________________</div>
             </div>
-            <div style={{ display: 'flex', justifyContent: 'flex-end', alignItems: 'center', padding: "0px 48px 0px 0px" }}>
+            <div style={{ display: 'flex', justifyContent: 'flex-end', alignItems: 'center', padding: "0px 10px 0px 0px", width: "98%" }}>
                 <input type='text' placeholder='Pesquisar usuário' className='inputSearch' onChange={updateSearch} value={search} style={{ marginLeft: "20px" }}></input>
                 <div style={{ backgroundColor: "gray", height: "30px", width: "30px", display: "flex", justifyContent: "center", alignItems: "center", borderRadius: "2px" }}>
                     <AiOutlineSearch></AiOutlineSearch>

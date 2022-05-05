@@ -1,8 +1,9 @@
-body, html{
+body,
+html {
   width: 100%;
   height: 100%;
   margin: 0;
-  font-family: Arial, "Helvetica Neue";
+  font-family: 'Poppins', sans-serif !important;
   font-weight: bold;
   /* overflow-y: hidden; */
 }

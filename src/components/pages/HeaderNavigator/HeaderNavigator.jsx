@@ -75,8 +75,8 @@ export default function HeaderNavigator() {
         rtl={false}
         draggable
       />
-      <div style = {{display: "flex", justifyContent: "center", alignItems: "center", gap: "20px"}}>
-        <span>Olá, {sessionStorage.getItem("name")}</span>
+      <div className = "dropdownHeader" style = {{display: "flex", justifyContent: "center", alignItems: "center", gap: "20px"}}>
+        <span className = "hello">Olá, {sessionStorage.getItem("name")}</span>
         <DropdownButton
           variant="light"
           title="Adminstrativo"

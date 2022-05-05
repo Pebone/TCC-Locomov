@@ -27,6 +27,9 @@ export default function Users() {
             .then(res => {
 
                 console.log(res.data)
+                // if(res.data.typeUser === 1){
+                //     res.data
+                // }
                 setUsers(res.data)
 
             }).catch(err => {
@@ -65,6 +68,15 @@ export default function Users() {
 
     const searchUsers = users.filter(
         (user) => {
+            if(user.typeUser === 1){
+                user.typeUser = "Super Admin"
+            }
+            if(user.typeUser === 2){
+                user.typeUser = "Admin"
+            }
+            if(user.typeUser === 3){
+                user.typeUser = "Usuário"
+            }
             return (user.name).indexOf(search) === 0 || (user.cpfUser).indexOf(search) === 0;
         }
     )
@@ -77,9 +89,9 @@ export default function Users() {
                     <text className='__title'>Lista de usuários</text>
                     <div>__________________________________________</div>
                 </div>
-                <div style={{ display: 'flex', justifyContent: 'flex-end', alignItems: 'center', padding: "0px 48px 0px 0px" }}>
+                <div style={{ display: 'flex', justifyContent: 'flex-end', alignItems: 'center', padding: "0px 10px 0px 0px", width: "98%" }}>
                     <input type='text' placeholder='Pesquisar usuário' className='inputSearch' onChange={updateSearch} value={search} style={{ marginLeft: "20px" }}></input>
-                    <div style={{ backgroundColor: "gray", height: "30px", width: "30px", display: "flex", justifyContent: "center", alignItems: "center", borderRadius: "2px" }}>
+                    <div className = "search" style={{ backgroundColor: "gray", height: "30px", width: "30px", display: "flex", justifyContent: "center", alignItems: "center", borderRadius: "2px" }}>
                         <AiOutlineSearch></AiOutlineSearch>
                     </div>
                 </div>
