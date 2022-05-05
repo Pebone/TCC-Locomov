@@ -1,73 +1,123 @@
-import React, {useState} from 'react'
+import React, { useState } from 'react'
 import "../../../assets/css/Global.scss"
 import HeaderNavigator from '../HeaderNavigator/HeaderNavigator.jsx'
 import api from '../../../services/api.js'
 import 'react-toastify/dist/ReactToastify.css';
 import { ToastContainer, toast } from 'react-toastify';
+import {
+  Modal,
+  Button,
+} from "react-bootstrap";
+import "bootstrap/dist/css/bootstrap.min.css";
 
 export default function Login() {
 
-    const [matricula, setMatricula] = useState('');
-    const [password, setPassword] = useState(0);
+  const [matricula, setMatricula] = useState('');
+  const [password, setPassword] = useState(0);
 
-    function Login(event) {  
+  const [show, setShow] = useState(false);
+  // const [id, setId] = useState("");
+  const [email, setEmail] = useState("");
+  // const [token, setToken] = useState("");
 
-        event.preventDefault()
-        
-        let user = {
-        email: matricula,
-        password: password
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
+
+  function Login(event) {
+
+    event.preventDefault()
+
+    let user = {
+      email: matricula,
+      password: password
+    }
+
+    api.post(`/auth/login`, user)
+      .then(response => {
+
+        console.log(response)
+        response.headers['token-type'] = `Bearer`
+        sessionStorage.setItem('accessToken', response.data.token)
+        sessionStorage.setItem('userID', response.data.user._id)
+        sessionStorage.setItem('contentType', response.headers['content-type'])
+        sessionStorage.setItem('tokenType', response.headers['token-type'])
+        sessionStorage.setItem('name', response.data.user.name)
+        sessionStorage.setItem('type', response.data.typeUser)
+
+        const token = sessionStorage.getItem('accessToken')
+        if (token) {
+          toast.success("Login efetuado!")
+          setTimeout(() =>
+            document.location.href = '/users', 3000
+          )
         }
-      
-      api.post(`/auth/login`, user)
-        .then(response => {
 
-          console.log(response)
-          response.headers['token-type'] = `Bearer`
-          sessionStorage.setItem('accessToken', response.data.token)
-          sessionStorage.setItem('userID', response.data.user._id)
-          sessionStorage.setItem('contentType', response.headers['content-type'])
-          sessionStorage.setItem('tokenType', response.headers['token-type'])
-          sessionStorage.setItem('name', response.data.user.name)
-          sessionStorage.setItem('type', response.data.typeUser)
+      }).catch(err => {
+        toast.error("Ocorreu algum erro!")
+        console.log(err);
+      })
+  };
 
-          const token = sessionStorage.getItem('accessToken')
-          if(token){
-              toast.success("Login efetuado!")
-              setTimeout(() =>
-              document.location.href = '/users', 3000
-              )
-          }
+  function ForgotPassword(event) {
 
-        }).catch(err =>{
-          toast.error("Ocorreu algum erro!")
-          console.log(err);
-        })
-      };
+    event.preventDefault()
+
+    let user = {
+      email: email,
+    }
+
+    api.post(`/auth/forgot_password`, user)
+      .then(response => {
+
+        console.log(response)
+        response.headers['token-type'] = `Bearer`
+        sessionStorage.setItem('accessToken', response.data.token)
+        sessionStorage.setItem('userID', response.data.user._id)
+        sessionStorage.setItem('contentType', response.headers['content-type'])
+        sessionStorage.setItem('tokenType', response.headers['token-type'])
+        sessionStorage.setItem('name', response.data.user.name)
+        sessionStorage.setItem('type', response.data.typeUser)
+
+        const token = sessionStorage.getItem('accessToken')
+        if (token) {
+          toast.success("Login efetuado!")
+          setTimeout(() =>
+            document.location.href = '/users', 3000
+          )
+        }
+
+      }).catch(err => {
+        toast.error("Ocorreu algum erro!")
+        console.log(err);
+      })
+  };
 
   return (
-      <div className = '__backgroundLogin'>
-        <div>
-            <HeaderNavigator></HeaderNavigator>
+    <div className='__backgroundLogin'>
+      <div>
+        <HeaderNavigator></HeaderNavigator>
+      </div>
+      <div className='__areaLogin'>
+        <div className='__divTitle'>
+          <text className='__title'>Acesso ao Locomoov</text>
+          <div>_____________________</div>
         </div>
-        <div className = '__areaLogin'>
-            <div className = '__divTitle'>
-                <text className = '__title'>Acesso ao Locomoov</text>
-                <div>_____________________</div>
-            </div>
-            <div className = '__Login'>
-                <div>
-                    <text>Matrícula</text>
-                </div>
-                <input type = 'text' placeholder = 'Matrícula' onChange = {(event) => setMatricula(event.target.value)}></input>
-                <div>
-                    <text>Senha</text>
-                </div>
-                <input type = 'password' placeholder = 'Senha' onChange = {(event) => setPassword(event.target.value)}></input>
-                <button type = 'submit' onClick = {Login}>Acessar</button>
-            </div>
+        <div className='__Login'>
+          <div>
+            <text>Matrícula</text>
+          </div>
+          <input type='text' placeholder='Matrícula' onChange={(event) => setMatricula(event.target.value)}></input>
+          <div>
+            <text>Senha</text>
+          </div>
+          <input type='password' placeholder='Senha' onChange={(event) => setPassword(event.target.value)}></input>
+          <div>
+            <a onClick={handleShow} style={{ textDecoration: 'underline', color: '#6da0eb' }}>Esqueci minha senha</a>
+          </div>
+          <button type='submit' onClick={Login}>Acessar</button>
         </div>
-        <ToastContainer
+      </div>
+      <ToastContainer
         position="top-right"
         autoClose={2000}
         hideProgressBar={false}
@@ -75,7 +125,32 @@ export default function Login() {
         closeOnClick
         rtl={false}
         draggable
-        />
+      />
+      <Modal show={show} onHide={handleClose}>
+        <Modal.Header closeButton>
+          <Modal.Title>Resetar senha</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <div style={{ display: "flex", alignItems: "center", flexDirection: "column", }}>
+            <div>
+              <text>Email</text>
+            </div>
+            <input
+              type="text"
+              placeholder="Informe seu email"
+              onChange={(event) => setEmail(event.target.value)}
+            ></input>
+          </div>
+        </Modal.Body>
+        <Modal.Footer>
+          <Button variant="danger" onClick={handleClose}>
+            Cancelar
+          </Button>
+          <Button variant="primary" onClick={ForgotPassword}>
+            Salvar senha
+          </Button>
+        </Modal.Footer>
+      </Modal>
     </div>
   )
 }
