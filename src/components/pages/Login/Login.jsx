@@ -10,6 +10,7 @@ import {
 } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Logo from "../../../assets/images/logo.png";
+import { FaStream } from 'react-icons/fa';
 
 export default function Login() {
 
@@ -95,6 +96,19 @@ export default function Login() {
       <div className='__areaLogin'>
         <div className='__divTitle'>
           <img src={Logo} className="__imgHeader"></img>
+        </div>
+        <div className = "onda" style = {{display: 'flex', justifyContent: 'center', alignItems: 'baseline', gap: "5px"}}>
+          <FaStream size = {20}></FaStream>
+          <div style = {{fontSize: "40px", fontWeight: "bold", marginBottom: '30px', letterSpacing: 5, display: 'flex'}}>
+            <label className = 'labelOnda'>L</label>
+            <label className = 'labelOnda'>O</label>
+            <label className = 'labelOnda'>C</label>
+            <label className = 'labelOnda'>O</label>
+            <label className = 'labelOnda'>M</label>
+            <label className = 'labelOnda'>O</label>
+            <label className = 'labelOnda'>O</label>
+            <label className = 'labelOnda'>V</label>
+          </div>
         </div>
         <div className='__Login'>
           <div>
