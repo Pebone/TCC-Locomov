@@ -236,9 +236,11 @@
 
 .onda{
     display: flex;
+    animation: slide-in-left 2s ease-in-out;
     
     .labelOnda{
         animation: animation 4s ease-in-out;
+        animation-delay: 1s;
     }
 }
 
@@ -247,14 +249,14 @@
         transform: rotate(0deg);
     }
     20% {
-        transform: rotate(-40deg);
+        // transform: rotate(-40deg);
     }
-    // 30% {
-    //     transform: rotate(-20deg);
+    30% {
+        transform: rotate(40deg);
+    }
+    // 40% {
+    //     transform: rotate(40deg);
     // }
-    40% {
-        transform: rotate(20deg);
-    }
     50% {
         transform: rotate(-10deg);
     }
@@ -275,6 +277,19 @@
     }
 
 }
+
+@keyframes slide-in-left {
+    0% {
+      -webkit-transform: translateX(-1000px);
+              transform: translateX(-1000px);
+      opacity: 0;
+    }
+    100% {
+      -webkit-transform: translateX(0);
+              transform: translateX(0);
+      opacity: 1;
+    }
+  }
 
 /* width */
 ::-webkit-scrollbar {
