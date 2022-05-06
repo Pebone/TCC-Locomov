@@ -79,7 +79,7 @@ export default function Login() {
 
         const token = sessionStorage.getItem('accessToken')
         if (token) {
-          toast.success("Um email foi enviado ao email informado contendo uma nova senha!")
+          toast.success("Um email foi enviado ao email informado!")
         }
 
       }).catch(err => {
@@ -155,7 +155,7 @@ export default function Login() {
             Cancelar
           </Button>
           <Button variant="primary" onClick={ForgotPassword}>
-            Salvar senha
+            Confirmar
           </Button>
         </Modal.Footer>
       </Modal>

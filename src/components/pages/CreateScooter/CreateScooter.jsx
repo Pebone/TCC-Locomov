@@ -60,7 +60,7 @@ export default function Create() {
             </div>
             <div className = '__Register'>
                 <div>
-                    <div style = {{display: "flex", alignItems: "center", flexDirection: "column"}}>
+                    <div style = {{display: "flex", alignItems: "baseline", flexDirection: "column"}}>
                         <div>
                             <text>Código</text>
                         </div>

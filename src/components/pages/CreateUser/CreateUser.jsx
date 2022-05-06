@@ -60,7 +60,7 @@ export default function Create() {
             </div>
             <div className = '__Register'>
                 <div>
-                    <div style = {{display: "flex", alignItems: "center", flexDirection: "column", margin: "15px"}}>
+                    <div style = {{display: "flex", alignItems: "baseline", flexDirection: "column", margin: "15px"}}>
                         <div>
                             <text>Matrícula</text>
                         </div>
@@ -74,13 +74,13 @@ export default function Create() {
                         </div>
                         <input type = 'text' placeholder = 'Email' onChange = {(event) => setEmail(event.target.value)}></input>
                     </div>
-                    <div style = {{display: "flex", alignItems: "center", flexDirection: "column", margin: "15px"}}>
+                    <div style = {{display: "flex", alignItems: "baseline", flexDirection: "column", margin: "15px"}}>
                         <div>
                             <text>CPF</text>
                         </div>
                         <input type = 'text' placeholder = 'CPF' onChange = {(event) => setCpf(event.target.value)}></input>
                         <div>
-                            <text>Name</text>
+                            <text>Nome</text>
                         </div>
                         <input type = 'text' placeholder = 'Name' onChange = {(event) => setName(event.target.value)}></input>
                         <div>

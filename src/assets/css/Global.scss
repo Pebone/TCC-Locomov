@@ -206,9 +206,10 @@
         outline: none;
         margin: 1px auto 30px auto;
         font-size: 15px;
-        border-radius: 2px;
-        border-style: none none solid none;
-        border-color: #ccc;
+        border-radius: 5px;
+        border: 1px solid gray;
+        box-shadow: 1px 1px 5px gray;
+        // border-color: #ccc;
     }
 
     input:focus{
