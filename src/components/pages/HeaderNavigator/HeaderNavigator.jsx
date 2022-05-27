@@ -1,6 +1,6 @@
-import React, { useState } from "react";
-import Logo from "../../../assets/images/logo.png";
-import "../../../assets/css/Global.scss";
+import React, { useState } from 'react';
+import Logo from '../../../assets/images/logo.png';
+import '../../../assets/css/Global.scss';
 import {
   InputGroup,
   Dropdown,
@@ -8,22 +8,22 @@ import {
   FormControl,
   Modal,
   Button,
-} from "react-bootstrap";
-import "bootstrap/dist/css/bootstrap.min.css";
-import "react-toastify/dist/ReactToastify.css";
-import { ToastContainer, toast } from "react-toastify";
-import api from "../../../services/api.js";
+} from 'react-bootstrap';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import 'react-toastify/dist/ReactToastify.css';
+import { ToastContainer, toast } from 'react-toastify';
+import api from '../../../services/api.js';
 
 export default function HeaderNavigator() {
   function Logout() {
     sessionStorage.clear();
-    toast.success("Tchau :)!");
-    setTimeout(() => (document.location.href = "/"), 3000);
+    toast.success('Tchau :)!');
+    setTimeout(() => (document.location.href = '/'), 3000);
   }
 
   const [show, setShow] = useState(false);
   // const [id, setId] = useState("");
-  const [senha, setSenha] = useState("");
+  const [senha, setSenha] = useState('');
   // const [token, setToken] = useState("");
 
   const handleClose = () => setShow(false);
@@ -33,30 +33,29 @@ export default function HeaderNavigator() {
     event.preventDefault();
 
     const headers = {
-      'Authorization': "Bearer " + sessionStorage.getItem('accessToken'),
-  }
+      Authorization: 'Bearer ' + sessionStorage.getItem('accessToken'),
+    };
 
     let user = {
-      id: sessionStorage.getItem("userID"),
+      id: sessionStorage.getItem('userID'),
       password: senha,
-      token: "Bearer " + sessionStorage.getItem("accessToken"),
     };
 
     console.log(user);
 
     api
-      .put(`/admin/reset_password`, user, { headers: headers })
+      .put(`/admin/change_password`, user, { headers: headers })
       .then((response) => {
         console.log(response);
 
-        const token = sessionStorage.getItem("accessToken");
+        const token = sessionStorage.getItem('accessToken');
         if (token) {
-          toast.success("Reset efetuado!");
-          setTimeout(() => (document.location.href = "/users"), 3000);
+          toast.success('Reset efetuado!');
+          setTimeout(() => (document.location.href = '/users'), 3000);
         }
       })
       .catch((err) => {
-        toast.error("Ocorreu algum erro!");
+        toast.error('Ocorreu algum erro!');
         console.log(err);
       });
   }
@@ -75,8 +74,16 @@ export default function HeaderNavigator() {
         rtl={false}
         draggable
       />
-      <div className = "dropdownHeader" style = {{display: "flex", justifyContent: "center", alignItems: "center", gap: "20px"}}>
-        <span className = "hello">Olá, {sessionStorage.getItem("name")}</span>
+      <div
+        className="dropdownHeader"
+        style={{
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems: 'center',
+          gap: '20px',
+        }}
+      >
+        <span className="hello">Olá, {sessionStorage.getItem('name')}</span>
         <DropdownButton
           variant="light"
           title="Adminstrativo"
@@ -103,32 +110,38 @@ export default function HeaderNavigator() {
           <Modal.Title>Resetar senha</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-        <div style = {{display: "flex", alignItems: "center", flexDirection: "column",}}>
-          <div>
-            <text>Id</text>
+          <div
+            style={{
+              display: 'flex',
+              alignItems: 'center',
+              flexDirection: 'column',
+            }}
+          >
+            {/* <div>
+              <text>Id</text>
+            </div>
+            <input
+              disabled
+              type="text"
+              value={sessionStorage.getItem('userID')}
+            ></input> */}
+            <div>
+              <text>Nova senha</text>
+            </div>
+            <input
+              type="text"
+              placeholder="Senha"
+              onChange={(event) => setSenha(event.target.value)}
+            ></input>
+            {/* <div>
+              <text>Token</text>
+            </div>
+            <input
+              disabled
+              type="text"
+              value={sessionStorage.getItem('accessToken')}
+            ></input> */}
           </div>
-          <input
-            disabled
-            type="text"
-            value={sessionStorage.getItem("userID")}
-          ></input>
-          <div>
-            <text>Nova senha</text>
-          </div>
-          <input
-            type="text"
-            placeholder="Senha"
-            onChange={(event) => setSenha(event.target.value)}
-          ></input>
-          <div>
-            <text>Token</text>
-          </div>
-          <input
-            disabled
-            type="text"
-            value={sessionStorage.getItem("accessToken")}
-          ></input>
-        </div>
         </Modal.Body>
         <Modal.Footer>
           <Button variant="danger" onClick={handleClose}>
