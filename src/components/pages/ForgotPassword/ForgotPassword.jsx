@@ -39,11 +39,8 @@ export default function ForgotPassword() {
       .then((response) => {
         console.log(response);
 
-        const token = sessionStorage.getItem('accessToken');
-        if (token) {
-          toast.success('Senha modificada!');
-          setTimeout(() => (document.location.href = '/'), 3000);
-        }
+        toast.success('Senha modificada!');
+        setTimeout(() => (document.location.href = '/'), 3000);
       })
       .catch((err) => {
         toast.error('Ocorreu algum erro!');
