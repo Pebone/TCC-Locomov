@@ -41,7 +41,7 @@ export default function ForgotPassword() {
 
         const token = sessionStorage.getItem('accessToken');
         if (token) {
-          toast.success('Cadastro efetuado!');
+          toast.success('Senha modificada!');
           setTimeout(() => (document.location.href = '/'), 3000);
         }
       })
