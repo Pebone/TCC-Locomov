@@ -84,6 +84,8 @@ export default function HeaderNavigator() {
           // className="__spanHeader"
         >
           <Dropdown.Item href="/createUsers">Criar Usuário</Dropdown.Item>
+          <Dropdown.Item href="/users_super">Listar SuperAdmins</Dropdown.Item>
+          <Dropdown.Item href="/users_admin">Listar Admins</Dropdown.Item>
           <Dropdown.Item href="/users">Listar Usuários</Dropdown.Item>
           <Dropdown.Divider />
           <Dropdown.Item href="/createScooters">Criar Patinetes</Dropdown.Item>

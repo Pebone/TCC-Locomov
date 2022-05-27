@@ -11,7 +11,7 @@ import { AiFillDelete, AiOutlineSearch } from 'react-icons/ai';
 import styles from "./App.module.css";
 import Table from "../../Table";
 
-export default function Users() {
+export default function Admins() {
 
     const [users, setUsers] = useState([]);
     const [search, setSearch] = useState("");
@@ -22,7 +22,7 @@ export default function Users() {
             'Authorization': "Bearer " + sessionStorage.getItem('accessToken'),
         }
 
-        api.get(`admin/users`, { headers: headers })
+        api.get(`admin/admin`, { headers: headers })
 
             .then(res => {
 
@@ -68,8 +68,8 @@ export default function Users() {
 
     const searchUsers = users.filter(
         (user) => {
-            if(user.typeUser === 2){
-                user.typeUser = "Usuário"
+            if(user.typeUser === 1){
+                user.typeUser = "Admin"
             }
             return (user.name).indexOf(search) === 0 || (user.cpfUser).indexOf(search) === 0;
         }

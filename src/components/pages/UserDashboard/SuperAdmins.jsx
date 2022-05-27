@@ -22,7 +22,7 @@ export default function Users() {
             'Authorization': "Bearer " + sessionStorage.getItem('accessToken'),
         }
 
-        api.get(`admin/users`, { headers: headers })
+        api.get(`admin/super_admin`, { headers: headers })
 
             .then(res => {
 
@@ -68,8 +68,8 @@ export default function Users() {
 
     const searchUsers = users.filter(
         (user) => {
-            if(user.typeUser === 2){
-                user.typeUser = "Usuário"
+            if(user.typeUser === 0){
+                user.typeUser = "Super Admin"
             }
             return (user.name).indexOf(search) === 0 || (user.cpfUser).indexOf(search) === 0;
         }
